@@ -31,7 +31,18 @@ select * from vehicle where weight_in_kilos between 20000 and 100000;
 select * from sensor 
 	where (year(date_installed) % 4 = 0 and year(date_installed) % 100 <> 0) or year(date_installed) % 400 = 0;
     
--- #8 show drivers that are driving ONLY trucks
-select * from vehicle_type;
-select * from work_shift;
-select * from vehicle;
+-- #8 show drivers that have ever been driving trucks
+select distinct concat(d.name, ' ', d.surname) driver from driver d 
+	join work_shift w_s on d.id = w_s.driver_id 
+    join vehicle v on v.id = w_s.vehicle_id 
+    join vehicle_type v_t on v.vehicle_type_id =v_t.id
+    where v_t.type='truck';
+    
+-- #9 count amount of drivers that have been working today
+select count(driver_id) amount from work_shift 
+	where date(begin_at)=date(now()) or end_at is null;
+    
+-- #10 count amount of mines for each company
+select title, count(1) mine_sights_amount from company left join company_mine_sight
+	on company.id = company_mine_sight.company_id
+	group by company.title;
