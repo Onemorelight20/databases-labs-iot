@@ -80,8 +80,17 @@ select maker,
 -- хід), у якому в кожному пункті за кожну дату відповідає лише одна
 -- стрічка. (Підказка: використовувати зовнішнє з’єднання та оператор
 -- CASE)
-select * from income left join outcome using(point, date);
-select * from income;
-select * from income_o;
-select * from income left join outcome using(point, date);
-select * from income rignt join outcome using(point, date);
+select point, date, sum(inc_refactored), sum(out_refactored) from
+	(select point, date,
+	case when inc is null then 0 else inc end inc_refactored,
+	case when outc.out is null then 0 else outc.out end out_refactored 
+	from income left join outcome outc using(point, date)) t1
+	group by point, date;
+    
+-- task 10
+-- 10. БД «Кораблі». Знайдіть назви всіх кораблів із БД, про які можна
+-- однозначно сказати, що вони були спущені на воду до 1942 р. Вивес-
+-- ти: назву кораблів. (Підказка: використовувати оператор UNION )
+select name as ship_name from ships where launched < 1942
+union
+select ship from battles b join outcomes o on b.name = o.battle where year(b.date) < 1942
