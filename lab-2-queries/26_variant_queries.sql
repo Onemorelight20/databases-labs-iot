@@ -11,6 +11,7 @@ select trip_no, town_from, town_to from trip where town_from='London' or town_to
 -- няті місця 'c' у будь-якому ряді.
 select date from pass_in_trip where place like '_c';
 
+
 -- task 3
 -- 3. БД «Комп. фірма». Вкажіть виробника для тих ПК, що мають
 -- жорсткий диск об’ємом не більше 8 Гбайт. Вивести: maker, type,
@@ -24,13 +25,18 @@ select distinct maker from product where
 	maker <> ALL(select maker from laptop inner join product using(model)) 
     and maker = ANY(select maker from pc inner join product using(model));
     
+/*
+Кораблі в «класах» побудовані за одним і тим ж проектом, а
+класу присвоюється, або ім’я першого корабля, побудованого за
+даним проектом, або назві класу дається ім’я проекту, що не співпадає
+з жодною назвою корабля. Корабель, що дав назву класу, називається
+головним.
+*/
 -- task 5
 -- 5. БД «Кораблі». Знайдіть класи кораблів, у яких хоча б один корабель
 -- був затоплений у битвах. Вивести: class. (Назви класів кораблів визна-
 -- чати за таблицею Ships, якщо його там немає, тоді порівнювати чи
 -- його назва не співпадає з назвою класу, тобто він є головним)
--- select * from ships;
--- select * from outcomes where result = 'sunk';
 select if(class is null, ship, class) as result_class 
 	from (select * from outcomes where result = 'sunk') as sunk_outcome 
     left join ships on ships.name = sunk_outcome.ship;
