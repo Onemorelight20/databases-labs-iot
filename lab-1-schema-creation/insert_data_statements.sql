@@ -163,4 +163,14 @@ insert into fatigue_monitoring (driver_id, work_shift_id, is_critical, fatigue_l
 		(select vehicle_id from work_shift where driver_id = (select id from driver where phone_number='205-699-0780' limit 1) order by begin_at desc limit 1) order by record_time desc limit 1),
     48,
     CURRENT_TIMESTAMP()
+),
+(
+	(select id from driver where phone_number='715-829-3484'),
+	(select id from work_shift where driver_id = (select id from driver where phone_number='715-829-3484') order by begin_at desc limit 1),
+    false,
+    'Level 2',
+    (select id from location where vehicle_id = 
+		(select vehicle_id from work_shift where driver_id = (select id from driver where phone_number='715-829-3484' limit 1) order by begin_at desc limit 1) order by record_time desc limit 1),
+    48,
+    CURRENT_TIMESTAMP()
 );
