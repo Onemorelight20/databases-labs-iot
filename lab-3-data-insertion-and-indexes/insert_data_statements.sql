@@ -342,6 +342,12 @@ insert into fatigue_monitoring (driver_id, work_shift_id, is_critical, fatigue_l
     CURRENT_TIMESTAMP()
 );
 
+
+
 -- ADD INDEXES
 ALTER TABLE fatigue_monitoring ADD INDEX (driver_id);
 ALTER TABLE  work_shift ADD INDEX (driver_id, vehicle_id);
+ALTER TABLE driver ADD INDEX (phone_number);
+
+SHOW INDEXES FROM fatigue_monitoring;
+SHOW INDEXES FROM work_shift;
