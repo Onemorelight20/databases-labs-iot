@@ -1,9 +1,9 @@
-package ua.boretskyi.dao;
+package ua.boretskyi.controller;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface GeneralDao<T, ID> {
+public interface GeneralController<T, ID> {
     List<T> findAll();
 
     Optional<T> findById(ID id);
