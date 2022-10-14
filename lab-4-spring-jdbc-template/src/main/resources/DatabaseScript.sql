@@ -95,7 +95,7 @@ CREATE TABLE mine_sight (
     country varchar(50) NOT NULL,
     city varchar(100) NOT NULL,
     title varchar(100) NOT NULL,
-    area_in_square_meeters int NOT NULL,
+    area_in_square_meters int NOT NULL,
     CONSTRAINT mine_sight_pk PRIMARY KEY (id)
 );
 
@@ -137,7 +137,7 @@ CREATE TABLE work_shift (
     medical_info_id int NOT NULL,
     mine_sight_id int NOT NULL,
     begin_at timestamp NOT NULL,
-    end_at int NULL,
+    end_at timestamp NULL,
     CONSTRAINT work_shift_pk PRIMARY KEY (id)
 );
 
@@ -280,7 +280,7 @@ insert into doctor (name, surname, phone_number) values
 ('Denise', 'Blue', '908-704-6588');
 
 -- Fill in the mine_sight table
-insert into mine_sight (country, city, title, area_in_square_meeters) values
+insert into mine_sight (country, city, title, area_in_square_meters) values
 ('Great Britain', 'Norfolk', 'Grimes Graves', 40000),
 ('Spain', 'South', 'Las Médulas', 130000),
 ('Germany', 'Goslar', 'Mines of Rammelsberg', 4900),
