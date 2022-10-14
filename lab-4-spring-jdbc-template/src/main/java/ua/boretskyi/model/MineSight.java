@@ -13,4 +13,8 @@ public class MineSight {
     private String city;
     private String title;
     private Integer areaInSquareMeters;
+
+    public static MineSight nullObject() {
+        return new MineSight(null, null, null, null, null);
+    }
 }

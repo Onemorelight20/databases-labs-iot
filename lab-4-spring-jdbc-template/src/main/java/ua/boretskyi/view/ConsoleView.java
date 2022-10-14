@@ -1,28 +1,27 @@
 package ua.boretskyi.view;
 
 import org.springframework.stereotype.Component;
-import ua.boretskyi.view.impl.CompanyView;
-import ua.boretskyi.view.impl.DoctorView;
-import ua.boretskyi.view.impl.DriverView;
+import ua.boretskyi.model.VehicleType;
+import ua.boretskyi.view.impl.*;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 @Component
 public class ConsoleView {
 
-    private final CompanyView companyView;
-    private final DoctorView doctorView;
-    private final DriverView driverView;
+    private final List<GeneralView> views;
     private final Map<String, String> menu;
     private final Map<String, Printable> methodsMenu;
     private final Scanner input = new Scanner(System.in);
 
-    public ConsoleView(CompanyView companyView, DoctorView doctorView, DriverView driverView) {
-        this.companyView = companyView;
-        this.doctorView = doctorView;
-        this.driverView = driverView;
+    public ConsoleView(CompanyView companyView, DoctorView doctorView, DriverView driverView, MedicalInfoView medicalInfoView, VehicleTypeView vehicleTypeView, VehicleView vehicleView) {
+        views = new ArrayList<>();
+        views.add(companyView);
+        views.add(doctorView);
+        views.add(driverView);
+        views.add(medicalInfoView);
+        views.add(vehicleTypeView);
+        views.add(vehicleView);
 
         menu = new LinkedHashMap<>();
         methodsMenu = new LinkedHashMap<>();
@@ -31,25 +30,21 @@ public class ConsoleView {
     }
 
     private void insertDataIntoMenu(){
-        menu.putAll(companyView.getMenu());
-        menu.putAll(doctorView.getMenu());
-        menu.putAll(driverView.getMenu());
+        views.forEach((view) -> menu.putAll(view.getMenu()));
         menu.put("Q", "Quit");
     }
     private void insertDataIntoMethodsMenu(){
-        methodsMenu.putAll(companyView.getMethodsMenu());
-        methodsMenu.putAll(doctorView.getMethodsMenu());
-        methodsMenu.putAll(driverView.getMethodsMenu());
+        views.forEach((view) -> methodsMenu.putAll(view.getMethodsMenu()));
     }
 
     private void outputMenu() {
-        System.out.println("\nMENU:");
+        System.out.println("\nmenu:");
         for (String key : menu.keySet())
             if (key.length() == 1) System.out.println(menu.get(key));
     }
 
     private void outputSubMenu(String fig) {
-        System.out.println("\nSubMENU:");
+        System.out.println("\nsubmenu:");
         for (String key : menu.keySet())
             if (key.length() != 1 && key.substring(0, 1).equals(fig)) System.out.println(menu.get(key));
     }

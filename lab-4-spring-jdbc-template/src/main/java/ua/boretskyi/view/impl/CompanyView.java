@@ -17,7 +17,7 @@ public class CompanyView implements GeneralView {
     private final Map<String, String> menu;
     private final Map<String, Printable> methodsMenu;
     private final Scanner input = new Scanner(System.in);
-    private final Company nullObject = new Company(null, null);
+    private final Company nullObject = Company.nullObject();
     private static final String TABLE_NAME = "Company";
 
 

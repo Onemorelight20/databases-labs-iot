@@ -11,4 +11,8 @@ import lombok.RequiredArgsConstructor;
 public class Company {
     private Integer id;
     private String title;
+
+    public static Company nullObject() {
+        return new Company(null, null);
+    }
 }

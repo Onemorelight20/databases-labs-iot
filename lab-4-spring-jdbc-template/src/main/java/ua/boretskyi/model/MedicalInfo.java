@@ -15,4 +15,10 @@ public class MedicalInfo {
     private String bloodType;
     private Integer doctorId;
     private Date updatedAt;
+
+    public static MedicalInfo nullObject() {
+        return new MedicalInfo(
+                null, null, null, null, null, null
+        );
+    }
 }

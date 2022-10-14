@@ -18,7 +18,7 @@ public class DoctorView implements GeneralView {
     private final Map<String, String> menu;
     private final Map<String, Printable> methodsMenu;
     private final Scanner input = new Scanner(System.in);
-    private final Doctor nullObject = new Doctor(null, null, null, null);
+    private final Doctor nullObject = Doctor.nullObject();
     private static final String TABLE_NAME = "Doctor";
 
     public DoctorView(DoctorController doctorController) {

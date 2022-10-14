@@ -15,4 +15,8 @@ public class Sensor {
     private String model;
     private Date dateInstalled;
     private Integer vehicleId;
+
+    public static Sensor nullObject() {
+        return new Sensor(null, null, null, null, null);
+    }
 }

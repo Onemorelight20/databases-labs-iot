@@ -18,4 +18,12 @@ public class FatigueMonitoring {
     private Integer locationId;
     private Integer vehicleSpeedKmPerH;
     private Timestamp recordTime;
+
+    public static FatigueMonitoring nullObject() {
+        return new FatigueMonitoring(
+                null, null, null,
+                null, null, null,
+                null, null
+        );
+    }
 }

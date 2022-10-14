@@ -10,4 +10,8 @@ import lombok.NoArgsConstructor;
 public class VehicleType {
     private Integer id;
     private String type;
+
+    public static VehicleType nullObject() {
+        return new VehicleType(null, null);
+    }
 }

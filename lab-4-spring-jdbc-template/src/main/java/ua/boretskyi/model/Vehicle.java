@@ -18,4 +18,8 @@ public class Vehicle {
     private String serialNumber;
     private Integer vehicleTypeId;
     private Integer weightInKilos;
+
+    public static Vehicle nullObject() {
+        return new Vehicle(null, null, null, null, null, null, null, null);
+    }
 }

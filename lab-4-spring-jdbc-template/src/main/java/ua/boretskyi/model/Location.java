@@ -16,4 +16,8 @@ public class Location {
     private BigDecimal longitude;
     private Timestamp recordTime;
     private Integer vehicleId;
+
+    public static Location nullObject(){
+        return new Location(null, null, null, null, null);
+    }
 }

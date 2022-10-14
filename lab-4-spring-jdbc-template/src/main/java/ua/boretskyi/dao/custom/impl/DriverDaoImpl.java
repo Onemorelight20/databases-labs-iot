@@ -13,13 +13,13 @@ import java.util.Optional;
 
 @Repository
 public class DriverDaoImpl implements DriverDao {
-    public static final String FIND_ALL = "SELECT * FROM driver";
-    public static final String FIND_BY_ID = "SELECT * FROM driver WHERE id=?";
-    public static final String FIND_BY_PHONE_NUMBER = "SELECT * FROM driver WHERE phone_number=?";
-    public static final String FIND_COMPANY = "SELECT * FROM company WHERE id=?";
-    public static final String CREATE = "INSERT driver(name, surname, company_id, phone_number) VALUES (?, ?, ?, ?)";
-    public static final String UPDATE = "UPDATE driver SET name=?, surname=?, company_id=?, phone_number=? WHERE id=?";
-    public static final String DELETE = "DELETE FROM driver WHERE id=?";
+    private static final String FIND_ALL = "SELECT * FROM driver";
+    private static final String FIND_BY_ID = "SELECT * FROM driver WHERE id=?";
+    private static final String FIND_BY_PHONE_NUMBER = "SELECT * FROM driver WHERE phone_number=?";
+    private static final String FIND_COMPANY = "SELECT * FROM company WHERE id=?";
+    private static final String CREATE = "INSERT driver(name, surname, company_id, phone_number) VALUES (?, ?, ?, ?)";
+    private static final String UPDATE = "UPDATE driver SET name=?, surname=?, company_id=?, phone_number=? WHERE id=?";
+    private static final String DELETE = "DELETE FROM driver WHERE id=?";
 
     private final JdbcTemplate jdbcTemplate;
 

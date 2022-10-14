@@ -12,4 +12,8 @@ public class Doctor {
     private String name;
     private String surname;
     private String phoneNumber;
+
+    public static Doctor nullObject() {
+        return new Doctor(null, null, null, null);
+    }
 }

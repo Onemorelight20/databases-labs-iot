@@ -17,4 +17,8 @@ public class WorkShift {
     private Integer mineSightId;
     private Timestamp beginAt;
     private Timestamp endAt;
+
+    public static WorkShift nullObject() {
+        return new WorkShift(null, null, null, null, null, null, null);
+    }
 }

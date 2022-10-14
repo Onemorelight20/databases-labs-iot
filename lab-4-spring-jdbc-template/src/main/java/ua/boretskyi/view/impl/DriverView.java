@@ -19,7 +19,7 @@ public class DriverView implements GeneralView {
     private final Map<String, String> menu;
     private final Map<String, Printable> methodsMenu;
     private final Scanner input = new Scanner(System.in);
-    private final Driver nullObject = new Driver(null, null, null, null, null);
+    private final Driver nullObject = Driver.nullObject();
     private static final String TABLE_NAME = "Driver";
     private static final int BASE_NUM = 3;
 

@@ -13,4 +13,8 @@ public class Driver {
     private String surname;
     private Integer companyId;
     private String phoneNumber;
+
+    public static Driver nullObject() {
+        return new Driver(null, null, null, null, null);
+    }
 }

@@ -9,4 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FatigueLevel {
     private String levelTitle;
+
+    public static FatigueLevel nullObject() {
+        return new FatigueLevel(null);
+    }
 }
