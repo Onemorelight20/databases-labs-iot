@@ -21,7 +21,7 @@ public class DriverView implements GeneralView {
     private final Scanner input = new Scanner(System.in);
     private final Driver nullObject = Driver.nullObject();
     private static final String TABLE_NAME = "Driver";
-    private static final int BASE_NUM = 3;
+    private static final int BASE_NUM = 12;
 
     public DriverView(DriverController driverController) {
         this.driverController = driverController;
@@ -29,12 +29,12 @@ public class DriverView implements GeneralView {
         menu = new LinkedHashMap<>();
 
         menu.put(String.valueOf(BASE_NUM), String.format(TABLE_SELECT.getExplanation(), BASE_NUM, TABLE_NAME));
-        menu.put(BASE_NUM + "1", String.format(CREATE_RECORD.getExplanation(), BASE_NUM * 10 + 1, TABLE_NAME));
-        menu.put(BASE_NUM + "2", String.format(UPDATE_RECORD.getExplanation(), BASE_NUM * 10 + 2, TABLE_NAME));
-        menu.put(BASE_NUM + "3", String.format(DELETE_RECORD.getExplanation(), BASE_NUM * 10 + 3, TABLE_NAME));
-        menu.put(BASE_NUM + "4", String.format(FIND_ALL.getExplanation(), BASE_NUM * 10 + 4, TABLE_NAME));
-        menu.put(BASE_NUM + "5", String.format(FIND_BY.getExplanation(), BASE_NUM * 10 + 5, TABLE_NAME, "ID"));
-        menu.put(BASE_NUM + "6", String.format(FIND_BY.getExplanation(), BASE_NUM * 10 + 6, TABLE_NAME, "phoneNumber"));
+        menu.put(BASE_NUM + "1", String.format(CREATE_RECORD.getExplanation(),  BASE_NUM + "1", TABLE_NAME));
+        menu.put(BASE_NUM + "2", String.format(UPDATE_RECORD.getExplanation(),  BASE_NUM + "2", TABLE_NAME));
+        menu.put(BASE_NUM + "3", String.format(DELETE_RECORD.getExplanation(),  BASE_NUM + "3", TABLE_NAME));
+        menu.put(BASE_NUM + "4", String.format(FIND_ALL.getExplanation(),  BASE_NUM + "4", TABLE_NAME));
+        menu.put(BASE_NUM + "5", String.format(FIND_BY.getExplanation(),  BASE_NUM + "5", TABLE_NAME, "ID"));
+        menu.put(BASE_NUM + "6", String.format(FIND_BY.getExplanation(),  BASE_NUM + "6", TABLE_NAME, "phoneNumber"));
 
         methodsMenu = new LinkedHashMap<>();
 

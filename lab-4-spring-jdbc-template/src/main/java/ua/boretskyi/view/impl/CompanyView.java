@@ -20,7 +20,7 @@ public class CompanyView implements GeneralView {
     private final Scanner input = new Scanner(System.in);
     private final Company nullObject = Company.nullObject();
     private static final String TABLE_NAME = "Company";
-    private static final int BASE_NUM = 1;
+    private static final int BASE_NUM = 10;
 
 
     @Autowired
@@ -28,22 +28,22 @@ public class CompanyView implements GeneralView {
         this.companyController = companyController;
 
         menu = new LinkedHashMap<>();
-        menu.put("1", String.format(TABLE_SELECT.getExplanation(), 1, TABLE_NAME));
-        menu.put(String.valueOf(BASE_NUM * 100 + 1), String.format(CREATE_RECORD.getExplanation(), BASE_NUM * 100 + 1, TABLE_NAME));
-        menu.put(String.valueOf(BASE_NUM * 100 + 2), String.format(UPDATE_RECORD.getExplanation(), BASE_NUM * 100 + 2, TABLE_NAME));
-        menu.put(String.valueOf(BASE_NUM * 100 + 3), String.format(DELETE_RECORD.getExplanation(), BASE_NUM * 100 + 3, TABLE_NAME));
-        menu.put(String.valueOf(BASE_NUM * 100 + 4), String.format(FIND_ALL.getExplanation(), BASE_NUM * 100 + 4, TABLE_NAME));
-        menu.put(String.valueOf(BASE_NUM * 100 + 5), String.format(FIND_BY.getExplanation(), BASE_NUM * 100 + 5, TABLE_NAME, "ID"));
-        menu.put(String.valueOf(BASE_NUM * 100 + 6), String.format(FIND_BY.getExplanation(), BASE_NUM * 100 + 6, TABLE_NAME, "title"));
+        menu.put("10", String.format(TABLE_SELECT.getExplanation(), 10, TABLE_NAME));
+        menu.put(BASE_NUM + "1", String.format(CREATE_RECORD.getExplanation(), BASE_NUM + "1", TABLE_NAME));
+        menu.put(BASE_NUM + "2", String.format(UPDATE_RECORD.getExplanation(), BASE_NUM + "2", TABLE_NAME));
+        menu.put(BASE_NUM + "3", String.format(DELETE_RECORD.getExplanation(),  BASE_NUM + "3", TABLE_NAME));
+        menu.put(BASE_NUM + "4", String.format(FIND_ALL.getExplanation(),  BASE_NUM + "4", TABLE_NAME));
+        menu.put(BASE_NUM + "5", String.format(FIND_BY.getExplanation(), BASE_NUM + "5", TABLE_NAME, "ID"));
+        menu.put(BASE_NUM + "6", String.format(FIND_BY.getExplanation(),  BASE_NUM + "6", TABLE_NAME, "title"));
 
         methodsMenu = new LinkedHashMap<>();
 
-        methodsMenu.put(String.valueOf(BASE_NUM * 100 + 1), this::createCompany);
-        methodsMenu.put(String.valueOf(BASE_NUM * 100 + 2), this::updateCompany);
-        methodsMenu.put(String.valueOf(BASE_NUM * 100 + 3), this::deleteFromCompany);
-        methodsMenu.put(String.valueOf(BASE_NUM * 100 + 4), this::findAllCompanies);
-        methodsMenu.put(String.valueOf(BASE_NUM * 100 + 5), this::findCompanyById);
-        methodsMenu.put(String.valueOf(BASE_NUM * 100 + 6), this::findCompanyByTitle);
+        methodsMenu.put(BASE_NUM + "1", this::createCompany);
+        methodsMenu.put(BASE_NUM + "2", this::updateCompany);
+        methodsMenu.put(BASE_NUM + "3", this::deleteFromCompany);
+        methodsMenu.put(BASE_NUM + "4", this::findAllCompanies);
+        methodsMenu.put(BASE_NUM + "5", this::findCompanyById);
+        methodsMenu.put(BASE_NUM + "6", this::findCompanyByTitle);
     }
 
     public Map<String, String> getMenu() {

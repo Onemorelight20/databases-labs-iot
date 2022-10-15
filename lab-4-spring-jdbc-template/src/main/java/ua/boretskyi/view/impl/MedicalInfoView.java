@@ -23,7 +23,7 @@ public class MedicalInfoView implements GeneralView {
     private final Scanner input = new Scanner(System.in);
     private final MedicalInfo nullObject = MedicalInfo.nullObject();
     private static final String TABLE_NAME = "MedicalInfo";
-    private static final int BASE_NUM = 4;
+    private static final int BASE_NUM = 16;
 
     public MedicalInfoView(MedicalInfoController medicalInfoController) {
         this.medicalInfoController = medicalInfoController;
@@ -31,14 +31,14 @@ public class MedicalInfoView implements GeneralView {
         menu = new LinkedHashMap<>();
 
         menu.put(String.valueOf(BASE_NUM), String.format(TABLE_SELECT.getExplanation(), BASE_NUM, TABLE_NAME));
-        menu.put(BASE_NUM + "1", String.format(CREATE_RECORD.getExplanation(), BASE_NUM * 10 + 1, TABLE_NAME));
-        menu.put(BASE_NUM + "2", String.format(UPDATE_RECORD.getExplanation(), BASE_NUM * 10 + 2, TABLE_NAME));
-        menu.put(BASE_NUM + "3", String.format(DELETE_RECORD.getExplanation(), BASE_NUM * 10 + 3, TABLE_NAME));
-        menu.put(BASE_NUM + "4", String.format(FIND_ALL.getExplanation(), BASE_NUM * 10 + 4, TABLE_NAME));
-        menu.put(BASE_NUM + "5", String.format(FIND_BY.getExplanation(), BASE_NUM * 10 + 5, TABLE_NAME, "ID"));
-        menu.put(BASE_NUM + "6", String.format(FIND_BY.getExplanation(), BASE_NUM * 10 + 6, TABLE_NAME, "driverId"));
-        menu.put(BASE_NUM + "7", String.format(FIND_BY.getExplanation(), BASE_NUM * 10 + 6, TABLE_NAME, "doctorId"));
-        menu.put(BASE_NUM + "8", String.format("  %d - Find %s by %s and %s", BASE_NUM * 10 + 6, TABLE_NAME, "driverId", "doctorId"));
+        menu.put(BASE_NUM + "1", String.format(CREATE_RECORD.getExplanation(), BASE_NUM  + "1", TABLE_NAME));
+        menu.put(BASE_NUM + "2", String.format(UPDATE_RECORD.getExplanation(), BASE_NUM + "2", TABLE_NAME));
+        menu.put(BASE_NUM + "3", String.format(DELETE_RECORD.getExplanation(), BASE_NUM + "3", TABLE_NAME));
+        menu.put(BASE_NUM + "4", String.format(FIND_ALL.getExplanation(), BASE_NUM  + "4", TABLE_NAME));
+        menu.put(BASE_NUM + "5", String.format(FIND_BY.getExplanation(), BASE_NUM + "5", TABLE_NAME, "ID"));
+        menu.put(BASE_NUM + "6", String.format(FIND_BY.getExplanation(), BASE_NUM + "6", TABLE_NAME, "driverId"));
+        menu.put(BASE_NUM + "7", String.format(FIND_BY.getExplanation(), BASE_NUM  + "7", TABLE_NAME, "doctorId"));
+        menu.put(BASE_NUM + "8", String.format("  %s - Find %s by %s and %s", BASE_NUM  + "8", TABLE_NAME, "driverId", "doctorId"));
 
         methodsMenu = new LinkedHashMap<>();
 

@@ -20,28 +20,30 @@ public class DoctorView implements GeneralView {
     private final Scanner input = new Scanner(System.in);
     private final Doctor nullObject = Doctor.nullObject();
     private static final String TABLE_NAME = "Doctor";
+    private static final int BASE_NUM = 11;
 
     public DoctorView(DoctorController doctorController) {
         this.doctorController = doctorController;
 
         menu = new LinkedHashMap<>();
 
-        menu.put("2", String.format(TABLE_SELECT.getExplanation(), 2, TABLE_NAME));
-        menu.put("21", String.format(CREATE_RECORD.getExplanation(), 21, TABLE_NAME));
-        menu.put("22", String.format(UPDATE_RECORD.getExplanation(), 22, TABLE_NAME));
-        menu.put("23", String.format(DELETE_RECORD.getExplanation(), 23, TABLE_NAME));
-        menu.put("24", String.format(FIND_ALL.getExplanation(), 24, TABLE_NAME));
-        menu.put("25", String.format(FIND_BY.getExplanation(), 25, TABLE_NAME, "ID"));
-        menu.put("26", String.format(FIND_BY.getExplanation(), 26, TABLE_NAME, "phoneNumber"));
+
+        menu.put("11", String.format(TABLE_SELECT.getExplanation(), BASE_NUM, TABLE_NAME));
+        menu.put(BASE_NUM + "1", String.format(CREATE_RECORD.getExplanation(),  BASE_NUM + "1", TABLE_NAME));
+        menu.put(BASE_NUM + "2", String.format(UPDATE_RECORD.getExplanation(),  BASE_NUM + "2", TABLE_NAME));
+        menu.put(BASE_NUM + "3", String.format(DELETE_RECORD.getExplanation(),  BASE_NUM + "3", TABLE_NAME));
+        menu.put(BASE_NUM + "4", String.format(FIND_ALL.getExplanation(),  BASE_NUM + "4", TABLE_NAME));
+        menu.put(BASE_NUM + "5", String.format(FIND_BY.getExplanation(),  BASE_NUM + "5", TABLE_NAME, "ID"));
+        menu.put(BASE_NUM + "6", String.format(FIND_BY.getExplanation(),  BASE_NUM + "6", TABLE_NAME, "phoneNumber"));
 
         methodsMenu = new LinkedHashMap<>();
 
-        methodsMenu.put("21", this::createDoctor);
-        methodsMenu.put("22", this::updateDoctor);
-        methodsMenu.put("23", this::deleteFromDoctor);
-        methodsMenu.put("24", this::findAllDoctors);
-        methodsMenu.put("25", this::findDoctorById);
-        methodsMenu.put("26", this::findDoctorByPhoneNumber);
+        methodsMenu.put(BASE_NUM + "1", this::createDoctor);
+        methodsMenu.put(BASE_NUM + "2", this::updateDoctor);
+        methodsMenu.put(BASE_NUM + "3", this::deleteFromDoctor);
+        methodsMenu.put(BASE_NUM + "4", this::findAllDoctors);
+        methodsMenu.put(BASE_NUM + "5", this::findDoctorById);
+        methodsMenu.put(BASE_NUM + "6", this::findDoctorByPhoneNumber);
     }
 
     @Override
