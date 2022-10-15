@@ -1,7 +1,6 @@
 package ua.boretskyi.view;
 
 import org.springframework.stereotype.Component;
-import ua.boretskyi.model.VehicleType;
 import ua.boretskyi.view.impl.*;
 
 import java.util.*;
@@ -14,7 +13,11 @@ public class ConsoleView {
     private final Map<String, Printable> methodsMenu;
     private final Scanner input = new Scanner(System.in);
 
-    public ConsoleView(CompanyView companyView, DoctorView doctorView, DriverView driverView, MedicalInfoView medicalInfoView, VehicleTypeView vehicleTypeView, VehicleView vehicleView) {
+    // implement FatigueMonitoring view & MineSight view
+    public ConsoleView(CompanyView companyView, DoctorView doctorView, DriverView driverView,
+                       MedicalInfoView medicalInfoView, VehicleTypeView vehicleTypeView, VehicleView vehicleView,
+                        FatigueLevelView fatigueLevelView, LocationView locationView, WorkShiftView workShiftView,
+                         MineSightView mineSightView, FatigueMonitoringView fatigueMonitoringView) {
         views = new ArrayList<>();
         views.add(companyView);
         views.add(doctorView);
@@ -22,6 +25,11 @@ public class ConsoleView {
         views.add(medicalInfoView);
         views.add(vehicleTypeView);
         views.add(vehicleView);
+        views.add(fatigueLevelView);
+        views.add(locationView);
+        views.add(workShiftView);
+        views.add(mineSightView);
+        views.add(fatigueMonitoringView);
 
         menu = new LinkedHashMap<>();
         methodsMenu = new LinkedHashMap<>();
@@ -39,14 +47,19 @@ public class ConsoleView {
 
     private void outputMenu() {
         System.out.println("\nmenu:");
-        for (String key : menu.keySet())
-            if (key.length() == 1) System.out.println(menu.get(key));
+        for (String key : menu.keySet()) {
+            System.out.println("KEY IS " + key);
+            if (key.length() != 3)
+                System.out.println(menu.get(key));
+        }
     }
 
-    private void outputSubMenu(String fig) {
+    private void outputSubmenu(String fig) {
         System.out.println("\nsubmenu:");
-        for (String key : menu.keySet())
-            if (key.length() != 1 && key.substring(0, 1).equals(fig)) System.out.println(menu.get(key));
+        for (String key : menu.keySet()) {
+            System.out.println("SUBKEY IS " + key);
+            if (key.startsWith(fig)) System.out.println(menu.get(key));
+        }
     }
 
     public void show() {
@@ -57,7 +70,7 @@ public class ConsoleView {
             keyMenu = input.nextLine().toUpperCase();
 
             if (keyMenu.matches("^\\d")) {
-                outputSubMenu(keyMenu);
+                outputSubmenu(keyMenu);
                 System.out.println("Please, select menu point.");
                 keyMenu = input.nextLine().toUpperCase();
             }

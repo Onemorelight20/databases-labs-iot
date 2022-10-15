@@ -75,8 +75,8 @@ public class SensorView implements GeneralView {
         Sensor sensor = getObjectFromConsole();
         Optional<Sensor> result = sensorController.update(id, sensor);
 
-        result.ifPresentOrElse(value -> System.out.printf(RECORD_WAS_CREATED.getText(), TABLE_NAME, value), () -> {
-            System.err.printf(RECORD_WAS_NOT_CREATED.getText(), TABLE_NAME);
+        result.ifPresentOrElse(value -> System.out.printf(RECORD_WAS_UPDATED.getText(), TABLE_NAME, value), () -> {
+            System.err.printf(RECORD_WAS_NOT_UPDATED.getText(), TABLE_NAME);
         });
     }
 
