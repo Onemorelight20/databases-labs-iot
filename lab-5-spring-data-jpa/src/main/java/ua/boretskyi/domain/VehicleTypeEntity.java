@@ -4,11 +4,10 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "vehicle_type", schema = "bohdan_boretskyi_smartcap", catalog = "")
+@Table(name = "vehicle_type", schema = "bohdan_boretskyi_smartcap")
 public class VehicleTypeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
     private Integer id;
     @Basic
     @Column(name = "type")

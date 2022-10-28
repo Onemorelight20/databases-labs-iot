@@ -5,11 +5,10 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "company", schema = "bohdan_boretskyi_smartcap", catalog = "")
+@Table(name = "company", schema = "bohdan_boretskyi_smartcap")
 public class CompanyEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
     private Integer id;
     @Basic
     @Column(name = "title")

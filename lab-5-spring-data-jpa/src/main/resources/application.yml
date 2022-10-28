@@ -12,9 +12,9 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
 
-#  mvc:  # the fix for swagger
-#    pathmatch:
-#      matching-strategy: ant_path_matcher
+  mvc:  # the fix for swagger
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 server:
   port: 8080

@@ -9,7 +9,6 @@ import java.util.Objects;
 public class FatigueMonitoringEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
     private Integer id;
     @Basic
     @Column(name = "driver_id")

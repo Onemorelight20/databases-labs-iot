@@ -5,11 +5,10 @@ import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "medical_info", schema = "bohdan_boretskyi_smartcap", catalog = "")
+@Table(name = "medical_info", schema = "bohdan_boretskyi_smartcap")
 public class MedicalInfoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
     private Integer id;
     @Basic
     @Column(name = "driver_id")
