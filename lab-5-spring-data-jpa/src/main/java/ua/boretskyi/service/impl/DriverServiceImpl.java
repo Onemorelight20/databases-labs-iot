@@ -1,6 +1,5 @@
 package ua.boretskyi.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.boretskyi.domain.DriverEntity;
 import ua.boretskyi.exception.EntityNotFoundException;
@@ -13,13 +12,12 @@ import java.util.List;
 @Service
 public class DriverServiceImpl implements DriverService {
 
-    DriverRepository driverRepository;
+    private final DriverRepository driverRepository;
 
     public DriverServiceImpl(DriverRepository driverRepository) {
         this.driverRepository = driverRepository;
     }
 
-    ;
 
     @Override
     public List<DriverEntity> findAll() {
@@ -29,7 +27,7 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public DriverEntity findById(Integer id) {
         return driverRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Driver", id));
+                .orElseThrow(() -> new EntityNotFoundException("Driver", String.valueOf(id)));
     }
 
     @Override
