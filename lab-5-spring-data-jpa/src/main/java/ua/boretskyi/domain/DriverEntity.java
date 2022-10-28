@@ -15,9 +15,10 @@ public class DriverEntity {
     @Basic
     @Column(name = "surname")
     private String surname;
-    @Basic
-    @Column(name = "company_id")
-    private Integer companyId;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id", nullable = false)
+    private CompanyEntity company;
     @Basic
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -46,12 +47,12 @@ public class DriverEntity {
         this.surname = surname;
     }
 
-    public Integer getCompanyId() {
-        return companyId;
+    public CompanyEntity getCompany() {
+        return company;
     }
 
-    public void setCompanyId(Integer companyId) {
-        this.companyId = companyId;
+    public void setCompany(CompanyEntity company) {
+        this.company = company;
     }
 
     public String getPhoneNumber() {
@@ -67,11 +68,12 @@ public class DriverEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DriverEntity that = (DriverEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(surname, that.surname) && Objects.equals(companyId, that.companyId) && Objects.equals(phoneNumber, that.phoneNumber);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(surname, that.surname)
+                && Objects.equals(company, that.company) && Objects.equals(phoneNumber, that.phoneNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, companyId, phoneNumber);
+        return Objects.hash(id, name, surname, company, phoneNumber);
     }
 }

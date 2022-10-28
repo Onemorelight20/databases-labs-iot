@@ -10,15 +10,17 @@ public class FatigueMonitoringEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Integer id;
-    @Basic
-    @Column(name = "driver_id")
-    private Integer driverId;
-    @Basic
-    @Column(name = "vehicle_id")
-    private Integer vehicleId;
-    @Basic
-    @Column(name = "mine_sight_id")
-    private Integer mineSightId;
+
+    @ManyToOne
+    @JoinColumn(name = "driver_id", referencedColumnName = "id")
+    private DriverEntity driver;
+
+    @ManyToOne
+    @JoinColumn(name = "vehicle_id", referencedColumnName = "id")
+    private VehicleEntity vehicle;
+    @ManyToOne
+    @JoinColumn(name = "mine_sight_id", referencedColumnName = "id")
+    private MineSightEntity mineSight;
     @Basic
     @Column(name = "fatigue_level_title")
     private String fatigueLevelTitle;
@@ -34,28 +36,28 @@ public class FatigueMonitoringEntity {
         this.id = id;
     }
 
-    public Integer getDriverId() {
-        return driverId;
+    public DriverEntity getDriver() {
+        return driver;
     }
 
-    public void setDriverId(Integer driverId) {
-        this.driverId = driverId;
+    public void setDriver(DriverEntity driver) {
+        this.driver = driver;
     }
 
-    public Integer getVehicleId() {
-        return vehicleId;
+    public VehicleEntity getVehicle() {
+        return vehicle;
     }
 
-    public void setVehicleId(Integer vehicleId) {
-        this.vehicleId = vehicleId;
+    public void setVehicle(VehicleEntity vehicle) {
+        this.vehicle = vehicle;
     }
 
-    public Integer getMineSightId() {
-        return mineSightId;
+    public MineSightEntity getMineSight() {
+        return mineSight;
     }
 
-    public void setMineSightId(Integer mineSightId) {
-        this.mineSightId = mineSightId;
+    public void setMineSight(MineSightEntity mineSight) {
+        this.mineSight = mineSight;
     }
 
     public String getFatigueLevelTitle() {
@@ -79,11 +81,11 @@ public class FatigueMonitoringEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FatigueMonitoringEntity that = (FatigueMonitoringEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(driverId, that.driverId) && Objects.equals(vehicleId, that.vehicleId) && Objects.equals(mineSightId, that.mineSightId) && Objects.equals(fatigueLevelTitle, that.fatigueLevelTitle) && Objects.equals(recordTime, that.recordTime);
+        return Objects.equals(id, that.id) && Objects.equals(driver, that.driver) && Objects.equals(vehicle, that.vehicle) && Objects.equals(mineSight, that.mineSight) && Objects.equals(fatigueLevelTitle, that.fatigueLevelTitle) && Objects.equals(recordTime, that.recordTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, driverId, vehicleId, mineSightId, fatigueLevelTitle, recordTime);
+        return Objects.hash(id, driver, vehicle, mineSight, fatigueLevelTitle, recordTime);
     }
 }

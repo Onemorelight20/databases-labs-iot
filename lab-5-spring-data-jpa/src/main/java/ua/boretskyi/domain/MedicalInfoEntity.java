@@ -10,9 +10,10 @@ public class MedicalInfoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Integer id;
-    @Basic
-    @Column(name = "driver_id")
-    private Integer driverId;
+
+    @ManyToOne
+    @JoinColumn(name = "driver_id", referencedColumnName = "id")
+    private DriverEntity driver;
     @Basic
     @Column(name = "sight_state")
     private String sightState;
@@ -31,12 +32,12 @@ public class MedicalInfoEntity {
         this.id = id;
     }
 
-    public Integer getDriverId() {
-        return driverId;
+    public DriverEntity getDriver() {
+        return driver;
     }
 
-    public void setDriverId(Integer driverId) {
-        this.driverId = driverId;
+    public void setDriver(DriverEntity driver) {
+        this.driver = driver;
     }
 
     public String getSightState() {
@@ -68,11 +69,11 @@ public class MedicalInfoEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MedicalInfoEntity that = (MedicalInfoEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(driverId, that.driverId) && Objects.equals(sightState, that.sightState) && Objects.equals(bloodType, that.bloodType) && Objects.equals(updatedAt, that.updatedAt);
+        return Objects.equals(id, that.id) && Objects.equals(driver, that.driver) && Objects.equals(sightState, that.sightState) && Objects.equals(bloodType, that.bloodType) && Objects.equals(updatedAt, that.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, driverId, sightState, bloodType, updatedAt);
+        return Objects.hash(id, driver, sightState, bloodType, updatedAt);
     }
 }

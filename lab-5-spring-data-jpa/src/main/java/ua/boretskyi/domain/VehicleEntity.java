@@ -22,9 +22,10 @@ public class VehicleEntity {
     @Basic
     @Column(name = "serial_number")
     private String serialNumber;
-    @Basic
-    @Column(name = "vehicle_type_id")
-    private Integer vehicleTypeId;
+
+    @ManyToOne
+    @JoinColumn(name = "vehicle_type_id", referencedColumnName = "id")
+    private VehicleTypeEntity vehicleType;
 
     public Integer getId() {
         return id;
@@ -66,12 +67,12 @@ public class VehicleEntity {
         this.serialNumber = serialNumber;
     }
 
-    public Integer getVehicleTypeId() {
-        return vehicleTypeId;
+    public VehicleTypeEntity getVehicleType() {
+        return vehicleType;
     }
 
-    public void setVehicleTypeId(Integer vehicleTypeId) {
-        this.vehicleTypeId = vehicleTypeId;
+    public void setVehicleType(VehicleTypeEntity vehicleType) {
+        this.vehicleType = vehicleType;
     }
 
     @Override
@@ -79,11 +80,11 @@ public class VehicleEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         VehicleEntity that = (VehicleEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(brand, that.brand) && Objects.equals(model, that.model) && Objects.equals(manufacturingDate, that.manufacturingDate) && Objects.equals(serialNumber, that.serialNumber) && Objects.equals(vehicleTypeId, that.vehicleTypeId);
+        return Objects.equals(id, that.id) && Objects.equals(brand, that.brand) && Objects.equals(model, that.model) && Objects.equals(manufacturingDate, that.manufacturingDate) && Objects.equals(serialNumber, that.serialNumber) && Objects.equals(vehicleType, that.vehicleType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, brand, model, manufacturingDate, serialNumber, vehicleTypeId);
+        return Objects.hash(id, brand, model, manufacturingDate, serialNumber, vehicleType);
     }
 }
