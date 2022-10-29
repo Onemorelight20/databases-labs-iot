@@ -6,6 +6,7 @@ import ua.boretskyi.exception.EntityNotFoundException;
 import ua.boretskyi.repository.FatigueLevelRepository;
 import ua.boretskyi.service.FatigueLevelService;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -35,10 +36,11 @@ public class FatigueLevelServiceImpl implements FatigueLevelService {
     }
 
     @Override
-    public void update(String s, FatigueLevelEntity entity) {
+    @Transactional
+    public void update(String s, FatigueLevelEntity newEntity) {
         FatigueLevelEntity fatigueLevelEntity = findById(s);
-        fatigueLevelEntity.setLevelTitle(entity.getLevelTitle());
-        fatigueLevelRepository.save(fatigueLevelEntity);
+        fatigueLevelRepository.delete(fatigueLevelEntity);
+        fatigueLevelRepository.save(newEntity);
     }
 
     @Override

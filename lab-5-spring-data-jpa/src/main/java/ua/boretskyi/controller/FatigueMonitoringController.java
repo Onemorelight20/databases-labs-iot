@@ -38,6 +38,7 @@ public class FatigueMonitoringController {
 
     @PostMapping
     public ResponseEntity<FatigueMonitoringDto> addFatigueMonitoring(@RequestBody FatigueMonitoringEntity entity) {
+        System.out.println("FATIGUE MONITORING" + entity);
         FatigueMonitoringEntity newEntity = fatigueMonitoringService.create(entity);
         FatigueMonitoringDto dto = fatigueMonitoringDtoAssembler.toModel(newEntity);
         return new ResponseEntity<>(dto, HttpStatus.CREATED);

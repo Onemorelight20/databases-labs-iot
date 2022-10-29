@@ -6,7 +6,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "fatigue_level", schema = "bohdan_boretskyi_smartcap")
 public class FatigueLevelEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "level_title")
     private String levelTitle;

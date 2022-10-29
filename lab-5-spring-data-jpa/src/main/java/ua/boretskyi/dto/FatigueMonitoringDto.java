@@ -19,9 +19,9 @@ import java.sql.Timestamp;
 @Relation(itemRelation = "fatigueMonitoring", collectionRelation = "fatigueMonitorings")
 public class FatigueMonitoringDto extends RepresentationModel<FatigueMonitoringDto> {
     private Integer id;
-    private DriverEntity driver;
-    private VehicleEntity vehicle;
-    private MineSightEntity mineSight;
+    private Integer driverId;
+    private Integer vehicleId;
+    private Integer mineSightId;
     private String fatigueLevelTitle;
     private Timestamp recordTime;
 }

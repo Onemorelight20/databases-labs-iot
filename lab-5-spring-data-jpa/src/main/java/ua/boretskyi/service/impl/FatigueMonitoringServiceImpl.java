@@ -38,10 +38,10 @@ public class FatigueMonitoringServiceImpl implements FatigueMonitoringService {
     public void update(Integer id, FatigueMonitoringEntity entity) {
         FatigueMonitoringEntity fatigueMonitoringEntity = findById(id);
         fatigueMonitoringEntity.setFatigueLevelTitle(entity.getFatigueLevelTitle());
-        fatigueMonitoringEntity.setDriver(entity.getDriver());
-        fatigueMonitoringEntity.setMineSight(entity.getMineSight());
+        fatigueMonitoringEntity.setDriverId(entity.getDriverId());
+        fatigueMonitoringEntity.setMineSightId(entity.getMineSightId());
         fatigueMonitoringEntity.setRecordTime(entity.getRecordTime());
-        fatigueMonitoringEntity.setVehicle(entity.getVehicle());
+        fatigueMonitoringEntity.setVehicleId(entity.getVehicleId());
         fatigueMonitoringRepository.save(fatigueMonitoringEntity);
     }
 
