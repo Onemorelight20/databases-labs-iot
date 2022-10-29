@@ -26,11 +26,13 @@ public class FatigueMonitoringDtoAssembler implements RepresentationModelAssembl
                 .vehicleId(entity.getVehicleId())
                 .recordTime(entity.getRecordTime())
                 .build();
-        Link selfLink = linkTo(methodOn(FatigueMonitoringController.class).getFatigueMonitoring(fatigueMonitoringDto.getId())).withSelfRel();
-        Link driverLink = linkTo(methodOn(DriverController.class).getDriver(fatigueMonitoringDto.getDriverId())).withRel("driver");
-        Link mineSightLink = linkTo(methodOn(MineSightController.class).getMineSight(fatigueMonitoringDto.getMineSightId())).withRel("mineSight");
-        Link vehicleLink = linkTo(methodOn(VehicleController.class).getVehicle(fatigueMonitoringDto.getVehicleId())).withRel("vehicle");
-        fatigueMonitoringDto.add(selfLink, driverLink, mineSightLink, vehicleLink);
+
+        fatigueMonitoringDto.add(
+                linkTo(methodOn(FatigueMonitoringController.class).getFatigueMonitoring(fatigueMonitoringDto.getId())).withSelfRel(),
+                linkTo(methodOn(DriverController.class).getDriver(fatigueMonitoringDto.getDriverId())).withRel("driver"),
+                linkTo(methodOn(MineSightController.class).getMineSight(fatigueMonitoringDto.getMineSightId())).withRel("mineSight"),
+                linkTo(methodOn(VehicleController.class).getVehicle(fatigueMonitoringDto.getVehicleId())).withRel("vehicle")
+        );
 
         return fatigueMonitoringDto;
     }

@@ -4,6 +4,7 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
+import ua.boretskyi.controller.DriverController;
 import ua.boretskyi.controller.MedicalInfoController;
 import ua.boretskyi.domain.MedicalInfoEntity;
 import ua.boretskyi.dto.MedicalInfoDto;
@@ -22,8 +23,11 @@ public class MedicalInfoDtoAssembler implements RepresentationModelAssembler<Med
                 .sightState(entity.getSightState())
                 .updatedAt(entity.getUpdatedAt())
                 .build();
-        Link selfLink = linkTo(methodOn(MedicalInfoController.class).getMedicalInfo(medicalInfoDto.getId())).withSelfRel();
-        medicalInfoDto.add(selfLink);
+
+        medicalInfoDto.add(
+                linkTo(methodOn(MedicalInfoController.class).getMedicalInfo(medicalInfoDto.getId())).withSelfRel(),
+                linkTo(methodOn(DriverController.class).getDriver(entity.getDriver().getId())).withRel("driver")
+        );
         return medicalInfoDto;
     }
 

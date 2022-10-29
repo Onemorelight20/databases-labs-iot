@@ -4,6 +4,7 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
+import ua.boretskyi.controller.CompanyController;
 import ua.boretskyi.controller.DriverController;
 import ua.boretskyi.domain.DriverEntity;
 import ua.boretskyi.dto.DriverDto;
@@ -22,8 +23,10 @@ public class DriverDtoAssembler implements RepresentationModelAssembler<DriverEn
                 .companyName(entity.getCompany().getTitle())
                 .phoneNumber(entity.getPhoneNumber())
                 .build();
-        Link selfLink = linkTo(methodOn(DriverController.class).getDriver(driverDto.getId())).withSelfRel();
-        driverDto.add(selfLink);
+        driverDto.add(
+                linkTo(methodOn(DriverController.class).getDriver(driverDto.getId())).withSelfRel(),
+                linkTo(methodOn(CompanyController.class).getCompany(entity.getCompany().getId())).withRel("company")
+        );
         return driverDto;
     }
 

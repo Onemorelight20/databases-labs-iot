@@ -5,6 +5,7 @@ import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 import ua.boretskyi.controller.VehicleController;
+import ua.boretskyi.controller.VehicleTypeController;
 import ua.boretskyi.domain.VehicleEntity;
 import ua.boretskyi.dto.VehicleDto;
 
@@ -23,8 +24,11 @@ public class VehicleDtoAssembler implements RepresentationModelAssembler<Vehicle
                 .vehicleType(entity.getVehicleType().getType())
                 .serialNumber(entity.getSerialNumber())
                 .build();
-        Link selfLink = linkTo(methodOn(VehicleController.class).getVehicle(vehicleDto.getId())).withSelfRel();
-        vehicleDto.add(selfLink);
+
+        vehicleDto.add(
+                linkTo(methodOn(VehicleController.class).getVehicle(vehicleDto.getId())).withSelfRel(),
+                linkTo(methodOn(VehicleTypeController.class).getVehicleType(entity.getVehicleType().getId())).withRel("vehicleType")
+        );
         return vehicleDto;
     }
 

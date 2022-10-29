@@ -24,8 +24,9 @@ public class MineSightDtoAssembler  implements RepresentationModelAssembler<Mine
                 .country(entity.getCountry())
                 .title(entity.getTitle())
                 .build();
-        Link selfLink = linkTo(methodOn(MineSightController.class).getMineSight(mineSightDto.getId())).withSelfRel();
-        mineSightDto.add(selfLink);
+        mineSightDto.add(
+                linkTo(methodOn(MineSightController.class).getMineSight(mineSightDto.getId())).withSelfRel()
+        );
         return mineSightDto;
     }
 
