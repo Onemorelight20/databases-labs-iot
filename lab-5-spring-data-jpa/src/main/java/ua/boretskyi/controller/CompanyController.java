@@ -5,21 +5,27 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.boretskyi.domain.CompanyEntity;
+import ua.boretskyi.domain.MineSightEntity;
 import ua.boretskyi.dto.CompanyDto;
+import ua.boretskyi.dto.MineSightDto;
 import ua.boretskyi.dto.assembler.CompanyDtoAssembler;
+import ua.boretskyi.dto.assembler.MineSightDtoAssembler;
 import ua.boretskyi.service.CompanyService;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(value = "api/companies")
 public class CompanyController {
     private final CompanyService companyService;
     private final CompanyDtoAssembler companyDtoAssembler;
+    private final MineSightDtoAssembler mineSightDtoAssembler;
 
-    public CompanyController(CompanyService companyService, CompanyDtoAssembler companyDtoAssembler) {
+    public CompanyController(CompanyService companyService, CompanyDtoAssembler companyDtoAssembler, MineSightDtoAssembler mineSightDtoAssembler) {
         this.companyService = companyService;
         this.companyDtoAssembler = companyDtoAssembler;
+        this.mineSightDtoAssembler = mineSightDtoAssembler;
     }
 
     @GetMapping(value = "/{companyId}")
@@ -54,4 +60,13 @@ public class CompanyController {
         companyService.delete(companyId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping(value = "/getAllMineSightsForCompanyWithId/{companyId}")
+    public ResponseEntity<CollectionModel<MineSightDto>> getAllMineSightsForCompanyWithId(@PathVariable Integer companyId) {
+        CompanyEntity companyEntity = companyService.findById(companyId);
+        Set<MineSightEntity> mineSightEntityList = companyEntity.getMineSightEntities();
+        CollectionModel<MineSightDto> mineSightDtos = mineSightDtoAssembler.toCollectionModel(mineSightEntityList);
+        return new ResponseEntity<>(mineSightDtos, HttpStatus.OK);
+    }
+
 }

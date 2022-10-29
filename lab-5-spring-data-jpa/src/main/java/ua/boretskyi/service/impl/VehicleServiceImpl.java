@@ -50,4 +50,9 @@ public class VehicleServiceImpl implements VehicleService {
         VehicleEntity vehicleEntity = findById(id);
         vehicleRepository.delete(vehicleEntity);
     }
+
+    @Override
+    public List<VehicleEntity> getVehicleEntitiesByVehicleTypeId(Integer vehicleTypeId) {
+        return vehicleRepository.getVehicleEntitiesByVehicleTypeId(vehicleTypeId);
+    }
 }

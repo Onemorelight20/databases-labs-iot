@@ -54,4 +54,11 @@ public class VehicleController {
         vehicleService.delete(vehicleId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping(value = "/withVehicleTypeId/{vehicleTypeId}")
+    public ResponseEntity<CollectionModel<VehicleDto>> getAllWithVehicleTypeId(@PathVariable Integer vehicleTypeId) {
+        List<VehicleEntity> entityList = vehicleService.getVehicleEntitiesByVehicleTypeId(vehicleTypeId);
+        CollectionModel<VehicleDto> dtos = vehicleDtoAssembler.toCollectionModel(entityList);
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
 }

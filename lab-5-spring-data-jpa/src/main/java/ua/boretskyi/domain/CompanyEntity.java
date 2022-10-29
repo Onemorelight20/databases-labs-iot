@@ -53,15 +53,13 @@ public class CompanyEntity {
         CompanyEntity that = (CompanyEntity) o;
 
         if (!Objects.equals(id, that.id)) return false;
-        if (!Objects.equals(title, that.title)) return false;
-        return Objects.equals(mineSightEntities, that.mineSightEntities);
+        return Objects.equals(title, that.title);
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (mineSightEntities != null ? mineSightEntities.hashCode() : 0);
         return result;
     }
 }

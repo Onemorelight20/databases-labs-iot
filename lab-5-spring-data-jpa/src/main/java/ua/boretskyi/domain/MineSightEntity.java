@@ -1,5 +1,7 @@
 package ua.boretskyi.domain;
 
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
@@ -20,7 +22,7 @@ public class MineSightEntity {
     @Column(name = "title")
     private String title;
 
-    @ManyToMany(mappedBy = "mineSightEntities")
+    @ManyToMany(mappedBy = "mineSightEntities", fetch = FetchType.LAZY)
     private Set<CompanyEntity> companyEntitySet;
 
 
