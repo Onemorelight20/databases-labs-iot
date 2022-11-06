@@ -1,4 +1,5 @@
-create schema if not exists `bohdan_boretskyi_smartcap`;
+drop schema if exists `bohdan_boretskyi_smartcap`;
+create schema `bohdan_boretskyi_smartcap`;
 use bohdan_boretskyi_smartcap;
 
 drop table if exists company_mine_sight;
