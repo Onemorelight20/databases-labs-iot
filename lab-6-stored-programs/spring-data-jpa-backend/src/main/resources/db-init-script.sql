@@ -122,10 +122,6 @@ ALTER TABLE fatigue_monitoring ADD CONSTRAINT fatigue_monitoring_mine_sight FORE
 ALTER TABLE medical_info ADD CONSTRAINT medical_info_driver FOREIGN KEY medical_info_driver (driver_id)
     REFERENCES driver (id);
 
--- Reference: vehicle_vehicle_type (table: vehicle)
-ALTER TABLE vehicle ADD CONSTRAINT vehicle_vehicle_type FOREIGN KEY vehicle_vehicle_type (vehicle_type_id)
-    REFERENCES vehicle_type (id);
-
 
 -- Insert some data into tables
 use bohdan_boretskyi_smartcap;
