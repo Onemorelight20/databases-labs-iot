@@ -49,4 +49,9 @@ public class MineSightServiceImpl implements MineSightService {
         MineSightEntity mineSightEntity = findById(id);
         mineSightRepository.delete(mineSightEntity);
     }
+
+    @Override
+    public Integer insertWithProcedure(String country, String city, String title) {
+        return mineSightRepository.insertWithProcedure(country, city, title);
+    }
 }

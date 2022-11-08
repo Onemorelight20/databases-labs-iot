@@ -37,7 +37,7 @@ public class MineSightController {
     }
 
     @PostMapping
-    public ResponseEntity<MineSightDto> addFatigueMonitoring(@RequestBody MineSightEntity entity) {
+    public ResponseEntity<MineSightDto> addMineSight(@RequestBody MineSightEntity entity) {
         MineSightEntity newEntity = mineSightService.create(entity);
         MineSightDto dto = mineSightDtoAssembler.toModel(newEntity);
         return new ResponseEntity<>(dto, HttpStatus.CREATED);
@@ -53,5 +53,13 @@ public class MineSightController {
     public ResponseEntity<?> deleteFatigueMonitoring(@PathVariable Integer mineSightId) {
         mineSightService.delete(mineSightId);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/insertWithProcedure")
+    public ResponseEntity<MineSightDto> insertMineSightWIthProcedure(@RequestBody MineSightDto dtoParam){
+        Integer id = mineSightService.insertWithProcedure(dtoParam.getCountry(), dtoParam.getCity(), dtoParam.getTitle());
+        MineSightEntity entityCreated = mineSightService.findById(id);
+        MineSightDto dto = mineSightDtoAssembler.toModel(entityCreated);
+        return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
 }
