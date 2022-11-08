@@ -5,10 +5,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.boretskyi.domain.MineSightEntity;
+import ua.boretskyi.dto.CompanyMineSightTitlesDto;
 import ua.boretskyi.dto.MineSightDto;
 import ua.boretskyi.dto.assembler.MineSightDtoAssembler;
 import ua.boretskyi.service.MineSightService;
 
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 @RestController
@@ -61,5 +64,15 @@ public class MineSightController {
         MineSightEntity entityCreated = mineSightService.findById(id);
         MineSightDto dto = mineSightDtoAssembler.toModel(entityCreated);
         return new ResponseEntity<>(dto, HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/insertIntoCompanyMineSightMtoM")
+    public ResponseEntity<?> insertIntoCompanyMineSightMtoM(@RequestBody CompanyMineSightTitlesDto dto){
+        try {
+            mineSightService.insertIntoCompanyMineSightMtoM(dto.getCompanyTitle(), dto.getMineSightTile());
+        } catch (Exception exception) {
+            return new ResponseEntity<>("Error with reason: " + exception.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -69,4 +69,20 @@ public class CompanyController {
         return new ResponseEntity<>(mineSightDtos, HttpStatus.OK);
     }
 
+    @PostMapping(value = "/insertTenCompanies")
+    public ResponseEntity<?> insertTenCompanies() {
+        companyService.insertTenCompanies();
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/getIdsSum")
+    public ResponseEntity<Integer> getIdsSum() {
+        return new ResponseEntity<>(companyService.getCompaniesIdSum(), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/createTwoTablesAndInsertDataDynamically")
+    public ResponseEntity<?> createTwoTablesAndInsertDataDynamically() {
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }

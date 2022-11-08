@@ -54,4 +54,9 @@ public class MineSightServiceImpl implements MineSightService {
     public Integer insertWithProcedure(String country, String city, String title) {
         return mineSightRepository.insertWithProcedure(country, city, title);
     }
+
+    @Override
+    public void insertIntoCompanyMineSightMtoM(String companyTitle, String mineSightTitle){
+        mineSightRepository.insertIntoCompanyMineSightMtoM(companyTitle, mineSightTitle);
+    }
 }

@@ -48,4 +48,19 @@ public class CompanyServiceImpl implements CompanyService {
         CompanyEntity companyEntity = findById(id);
         companyRepository.delete(companyEntity);
     }
+
+    @Override
+    public void insertTenCompanies() {
+        companyRepository.insertTenCompanies();
+    }
+
+    @Override
+    public Integer getCompaniesIdSum() {
+        return companyRepository.getCompaniesIdSum();
+    }
+
+    @Override
+    public void createTwoTablesAndInsertDataDynamically() {
+        companyRepository.createTwoTablesAndInsertDataDynamically();
+    }
 }
