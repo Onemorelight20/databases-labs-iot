@@ -2,6 +2,7 @@
 SET @new_id = -1;
 CALL insert_into_mine_sight("Ukraine", "LVIV", "COOL_TITLE()VERY))", @new_id);
 select @new_id;
+select * from mine_sight;
 
 
 -- 2b test
